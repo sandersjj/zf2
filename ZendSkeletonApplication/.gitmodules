@@ -1,3 +1,12 @@
 [submodule "vendor/ZendFramework"]
 	path = vendor/ZendFramework
 	url = git://github.com/zendframework/zf2.git
+[submodule "zf2.git"]
+	path = zf2.git
+	url = git://github.com/zendframework
+[submodule "vendor/DoctrineORMModule"]
+	path = vendor/DoctrineORMModule
+	url = git://github.com/doctrine/DoctrineORMModule.git
+[submodule "vendor/DoctrineModule"]
+	path = vendor/DoctrineModule
+	url = git://github.com/doctrine/DoctrineModule.git

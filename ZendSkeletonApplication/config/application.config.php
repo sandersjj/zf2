@@ -2,6 +2,8 @@
 return array(
     'modules' => array(
         'Application',
+        'DoctrineModule',
+        'DoctrineORMModule'
     ),
     'module_listener_options' => array( 
         'config_cache_enabled' => false,
