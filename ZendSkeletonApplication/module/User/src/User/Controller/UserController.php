@@ -3,7 +3,7 @@
 namespace User\Controller;
 
 use Zend\Mvc\Controller\ActionController,
-    User\Entity\User,
+    \User\Entity\User as User,
     Doctrine\ORM\EntityManager;
 
 class UserController extends ActionController
@@ -26,15 +26,16 @@ class UserController extends ActionController
 //        $oManager = new \Page\Manager();
 //        $aPages = $oManager->getAllPages();
 //        \Zend\Debug::dump($aPages);
-        
-        
+        $oUser = new User();
+//        \Zend\Debug::dump($this->_em->find('User\Entity\User',1));
+        \Zend\Debug::dump($this->_em->getRepository('User\Entity\User')->findAll());
          
         die('ik ben de index action');
     }
     
     public function listAction()
     {
-        
+        die('ik ben de list action');
     }
     /**
      * 
