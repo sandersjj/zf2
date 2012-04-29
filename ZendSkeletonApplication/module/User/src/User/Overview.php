@@ -2,6 +2,7 @@
 
 namespace User;
 
+
 class Overview{
 
     /**
@@ -25,7 +26,12 @@ class Overview{
      */
     protected $aData;
     
-    
+    /**
+     *
+     * @var boolean does the overview have standard checkboxes 
+     * for multiple select?
+     */
+    protected $bHasCheckboxes;
 
     /**
      * @param array|object the data to put in the table
@@ -37,11 +43,14 @@ class Overview{
             $this->setICols(count($aCols));
             $this->setAColnames($aCols);
         }
-        
+        $this->bHasCheckboxes = true;
         $this->aData = $mData;
         
     }
-    
+    /**
+     * This function outputs the table
+     * @return string 
+     */
     public function output()
     {
         $this->startTable();
@@ -63,7 +72,9 @@ class Overview{
     private function generateTableHead()
     {
         $this->sTable.= '<tr>' . PHP_EOL;
-        
+        if($this->bHasCheckboxes){
+            $this->sTable .= '<th><input type="checkbox" name="" value=""></th>';
+        }
         foreach($this->aColnames as $sColname){
             $this->sTable.= '<th>' . $sColname . '</th>';
         }
@@ -79,9 +90,13 @@ class Overview{
         
         foreach($this->aData as $aData){
           $this->sTable.= '<tr>';
+          if($this->bHasCheckboxes){
+              $this->sTable.= '<td><input type="checkbox" name="" value=""></td>';
+          }
           foreach($this->aColnames as $sColname){
               $this->sTable.= '<td>';
               $methodName = 'get' . ucfirst($sColname);
+              
               $this->sTable.= call_user_func( array( $aData, $methodName ) ); 
               $this->sTable.= '</td>';
           }
