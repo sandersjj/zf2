@@ -26,11 +26,20 @@ class UserController extends ActionController
 //        $oManager = new \Page\Manager();
 //        $aPages = $oManager->getAllPages();
 //        \Zend\Debug::dump($aPages);
-        $oUser = new User();
-//        \Zend\Debug::dump($this->_em->find('User\Entity\User',1));
-        \Zend\Debug::dump($this->_em->getRepository('User\Entity\User')->findAll());
-         
-        die('ik ben de index action');
+//        $oUser = new User();
+//      
+        $aAllUsers =  $this->_em->getRepository('User\Entity\User')->findAll();
+        
+        
+        $oOverview = new \User\overview($aAllUsers,array('id','first_name','last_name','initials','email'));
+        $sTable = $oOverview->output();
+        
+        
+         return array(
+             'users' => $aAllUsers,
+             'table' => $sTable
+        );
+//        
     }
     
     public function listAction()
