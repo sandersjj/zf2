@@ -4,7 +4,10 @@ namespace User\Controller;
 
 use Zend\Mvc\Controller\ActionController,
     \User\Entity\User as User,
-    Doctrine\ORM\EntityManager;
+    Doctrine\ORM\EntityManager,
+    Zend\EventManager\EventManager,
+    Zend\EventManager\Event;
+
 
 class UserController extends ActionController
 {
@@ -28,10 +31,16 @@ class UserController extends ActionController
 //        \Zend\Debug::dump($aPages);
 //        $oUser = new User();
 //      
+
+//        
+    }
+    
+    public function listAction()
+    {
         $aAllUsers =  $this->_em->getRepository('User\Entity\User')->findAll();
         
         
-        $oOverview = new \User\overview($aAllUsers,array('id','first_name','last_name','initials','email'));
+        $oOverview = new \User\overview($aAllUsers,array('id','firstName','lastName','initials','email', 'phoneNumber'));
         $sTable = $oOverview->output();
         
         
@@ -39,13 +48,13 @@ class UserController extends ActionController
              'users' => $aAllUsers,
              'table' => $sTable
         );
-//        
     }
     
-    public function listAction()
+    public function editAction()
     {
-        die('ik ben de list action');
+        die('dit is de edit action');
     }
+    
     /**
      * 
      */

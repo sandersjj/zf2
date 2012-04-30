@@ -87,9 +87,14 @@ class Overview{
      */
     private function generateTable()
     {
-        
+        $iCounter = 0;
         foreach($this->aData as $aData){
+          
+          
+          
           $this->sTable.= '<tr>';
+              $iRowId = call_user_func( array( $aData, 'getId' ));
+          
           if($this->bHasCheckboxes){
               $this->sTable.= '<td><input type="checkbox" name="" value=""></td>';
           }
@@ -97,7 +102,7 @@ class Overview{
               $this->sTable.= '<td>';
               $methodName = 'get' . ucfirst($sColname);
               
-              $this->sTable.= call_user_func( array( $aData, $methodName ) ); 
+              $this->sTable.= '<a href="edit/id/'.$iRowId .  '">' . call_user_func( array( $aData, $methodName )) . '</a>' ; 
               $this->sTable.= '</td>';
           }
           $this->sTable.= '</tr>';

@@ -18,11 +18,11 @@ class User implements \IteratorAggregate
     /**
      * @ORM\Column(type="string")
      */
-    private $first_name;
+    private $firstName;
     /**
      * @ORM\Column(type="string")
      */
-    private $last_name;
+    private $lastName;
     /**
      * @ORM\Column(type="string")
      */
@@ -31,6 +31,10 @@ class User implements \IteratorAggregate
      * @ORM\Column(type="string")
      */
     private $email;
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $phoneNumber;
 
     
     public function getId() {
@@ -41,20 +45,20 @@ class User implements \IteratorAggregate
         $this->id = $id;
     }
 
-    public function getFirst_name() {
-        return $this->first_name;
+    public function getFirstName() {
+        return $this->firstName;
     }
 
-    public function setFirst_name($first_name) {
-        $this->first_name = $first_name;
+    public function setFirstName($firstName) {
+        $this->firstName = $firstName;
     }
 
-    public function getLast_name() {
-        return $this->last_name;
+    public function getLastName() {
+        return $this->lastName;
     }
 
-    public function setLast_name($last_name) {
-        $this->last_name = $last_name;
+    public function setLastName($lastName) {
+        $this->lastName = $lastName;
     }
 
     public function getInitials() {
@@ -73,6 +77,15 @@ class User implements \IteratorAggregate
         $this->email = $email;
     }
 
+    public function getPhoneNumber() {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber($phoneNumber) {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    
 
     public function toArray(){
         return get_object_vars($this);
